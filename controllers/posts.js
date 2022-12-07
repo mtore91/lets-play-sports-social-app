@@ -34,14 +34,21 @@ module.exports = {
       const result = await cloudinary.uploader.upload(req.file.path);
 
       await Post.create({
-        title: req.body.title,
+        sport: req.body.sport,
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
-        likes: 0,
-        user: req.user.id,
+        likes: 1,
+        createdById: req.user.id,
+        createdBy: req.user.userName,
+        date: req.body.date,
+        time: req.body.time,
+        address: req.body.address,
+        playersNeeded: req.body.playersNeeded,
+        joinedUsers: [req.user.userName],
+        joinedUserNumber: 1,
       });
-      console.log("Post has been added!");
+      console.log("Event has been added!");
       res.redirect("/profile");
     } catch (err) {
       console.log(err);
@@ -52,10 +59,26 @@ module.exports = {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         {
-          $inc: { likes: 1 },
+          $inc: { likes: 1, joinedUserNumber: 1},
+          $push: { joinedUsers: req.user.userName }
         }
       );
-      console.log("Likes +1");
+      console.log("A player joined");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  unlikePost: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { likes: -1, joinedUserNumber: -1},
+          $pull: { joinedUsers: req.user.userName }
+        }
+      );
+      console.log("A player left");
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);
