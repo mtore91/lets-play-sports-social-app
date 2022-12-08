@@ -7,6 +7,9 @@ const PostSchema = new mongoose.Schema({
   joinedUsers: {
     type: Array,
     require: true,
+  }, joinedUserIds: {
+    type: Array,
+    require: true,
   },
   joinedUserNumber: {
     type: Number,

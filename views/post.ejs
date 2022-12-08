@@ -12,7 +12,7 @@
       <br><span>Address: <%= post.address %></span>
       <img class="img-fluid" src="<%= post.image%>" />
       <div class="row justify-content-between">
-        <% if(post.joinedUsers.includes(user.userName)){ %>
+        <% if(post.joinedUsers.includes(user.userName) && post.createdyBy !== user.userName){ %>
         <h4>You have already joined this game. Click button to unjoin.</h4> 
         <form
           class="col-1"

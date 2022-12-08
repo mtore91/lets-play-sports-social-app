@@ -14,7 +14,7 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
+      res.render("feed.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -37,7 +37,6 @@ module.exports = {
         sport: req.body.sport,
         image: result.secure_url,
         cloudinaryId: result.public_id,
-        caption: req.body.caption,
         likes: 1,
         createdById: req.user.id,
         createdBy: req.user.userName,
@@ -46,6 +45,7 @@ module.exports = {
         address: req.body.address,
         playersNeeded: req.body.playersNeeded,
         joinedUsers: [req.user.userName],
+        joinedUserIds: [req.user.id],
         joinedUserNumber: 1,
       });
       console.log("Event has been added!");
@@ -60,14 +60,14 @@ module.exports = {
         { _id: req.params.id },
         {
           $inc: { likes: 1, joinedUserNumber: 1},
-          $push: { joinedUsers: req.user.userName }
+          $push: { joinedUsers: req.user.userName, joinedUserIds: req.user.id }
         }
       );
       console.log("A player joined");
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);
-    }
+    } 
   },
   unlikePost: async (req, res) => {
     try {
