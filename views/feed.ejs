@@ -4,11 +4,17 @@
       <h1><%= user.userName %>'s Feed</h1>
       <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
+          <% if(posts[i].date >= new Date()){ %>
+            <li class="col-6 justify-content-between mt-5" id="feedposts">
+              <img src="<%= user.avatar %>" alt="" id="profilePic">
             <a href="/post/<%= posts[i]._id%>">
-              <%= posts[i].sport %> game at <%= posts[i].address %> on <%= posts[i].date.toDateString() %> currently needs <%= posts[i].playersNeeded - posts[i].likes %> players.
+              <%= posts[i].sport %> game at <%= posts[i].address %> on <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %> currently needs <%= posts[i].playersNeeded - posts[i].likes %> players.
             </a>
-            <br>
+            <br> 
+            <a href="/post/<%= posts[i]._id%>">
+                <img src="<%= posts[i].image %>" alt="" id="event-img">
+              </a>
+              
             <% if(posts[i].joinedUsers.includes(user.userName)){ %>
               <span>You have joined this game.</span>
             <%}%>
@@ -17,6 +23,7 @@
               <span>Enough players have joined, game on!</span>
             <%}%>
             </li>
+          <%}%>
         <% } %>
         </ul>
     </div>

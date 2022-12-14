@@ -29,8 +29,28 @@
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                      </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <div class="mb-3">
+                      <label for="avatar" class="form-label">Select avatar</label>
+                      <br>
+                      <select onchange="changeImage()" id="mySelect" name="avatar">
+                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673264/bball_hhevab.jpg">Iverson</option>
+                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673260/soccer_pchgap.jpg">Messi</option>
+                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673263/tennis_v7wbpf.jpg">Federer</option>
+                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673260/street_pp7n8e.jpg">Ronaldinho</option>
+                      </select>
+                      <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673264/bball_hhevab.jpg" id="myImage"> 
+                      <script>
+                        function changeImage() {
+                          // Get the selected option's value
+                          var selectedValue = document.getElementById("mySelect").value;
+                          
+                          // Update the image tag's source using the selected option's value
+                          document.getElementById("myImage").src = selectedValue;
+                        }
+                        </script>
+                    </div>
+                    <button type="submit" class="btn btn-primary" value="Upload">Create profile</button>
                   </form>
             </section>
         </div>

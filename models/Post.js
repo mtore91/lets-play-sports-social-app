@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const PostSchema = new mongoose.Schema({
   image: {
     type: String,
+    require: false
   },
   joinedUsers: {
     type: Array,
@@ -45,10 +46,6 @@ const PostSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    required: true,
-  },
-  time: {
-    type: String,
     required: true,
   },
   playersNeeded: {
