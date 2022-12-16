@@ -1,12 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body{
+    color: white;
+}
 img {
     width: 150px;
+}
+.navimg{
+    width: 110px;
 }
 
 #event-img {
     width: 100px;
+    border-radius: 50%;
 }
 #myImage{
     width:250px;
@@ -17,8 +21,22 @@ img {
     width:80px;
     border-radius: 50%;
 }
+#profilePic:hover{
+    transform: rotate(5deg);    
+}
 #feedposts{
-    border: solid orange 1px;
+    border: solid #BE6E46 3px;
     border-radius: 10px;
     padding: 10px;
+    background-color: rgb(130, 163, 161, 0.5)
+}
+#feedposts:hover{
+    border: solid #BE6E46 4px;
+    background-color:rgb(130, 163, 161, 0.75);
+}
+.headBg {
+    background-color: rgb(187, 216, 179, 0.1);
+  }
+.navbar{
+    margin:0 10%
 }

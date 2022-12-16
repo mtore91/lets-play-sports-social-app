@@ -38,7 +38,7 @@
         <br>
         <h3 class="col-3">Players joined: <%= post.likes %></h3>
         <h3 class="col-3">Players still needed: <%= post.playersNeeded - post.likes %></h3>
-        <h3 class="col-3">Players joining: <%= post.joinedUsers.join(', ') %></h5>
+        <h3 class="col-3">Players joining: <%= post.joinedUsers.join(', ') %></h3>
         <%if(post.createdById == user.id){ %>
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
