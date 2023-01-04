@@ -1,7 +1,10 @@
 <%- include('partials/header') -%>
   <div class="container">
     <div class="row justify-content-center mt-5">
-      <h1 class="text-white text-center"><%= user.userName %>'s Feed</h1>
+      <h1 class="text-dark text-center">Current games</h1>
+      <div id="createEventButton">
+        <a href="/profile" class="link-light">Create a new game</a>
+      </div>
       <ul class="row list-unstyled justify-content-evenly">
         <% for(var i=0; i<posts.length; i++) {%>
           <% if(posts[i].date >= new Date()){ %>
@@ -27,11 +30,11 @@
                 <% } else { %> 
                   <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671195359/calvin-jung-CWon59n3AB8-unsplash_hjvzca.jpg" alt="field" id="event-img">
                 <% } %>
-                <% if(posts[i].playersNeeded == posts[i].joinedUserNumber){ %>
+                <% if(posts[i].playersNeeded +1 == posts[i].joinedUserNumber){ %>
                   <span class="link-light">Enough players have joined, game on!</span>
                 <%}%>
                 <% if(posts[i].playersNeeded !== posts[i].joinedUserNumber){ %>
-                  <span class="link-light"><%=posts[i].playersNeeded - posts[i].likes %> player(s) currently needed</span>
+                  <span class="link-light"><%=posts[i].playersNeeded - posts[i].likes +1 %> player(s) currently needed</span>
                 <%}%><br>
             <span class="link-light">
                <%=posts[i].sport[0].toUpperCase()+posts[i].sport.slice(1).toLowerCase() %> game at <%= posts[i].address %> on <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %>.
@@ -41,7 +44,8 @@
              
               
             <% if(posts[i].joinedUsers.includes(user.userName)){ %>
-              <span class="link-light"><strong>You have joined this game</strong> along with <%= posts[i].joinedUsers.join(', ') %></span>
+              <span class="link-light"><strong>You have joined this game</strong> <br><br>
+                These players have joined so far: <%= posts[i].joinedUsers.join(', ') %></span>
             <%} else {%> 
               <span class="link-light">
                 These players have joined so far: <%= posts[i].joinedUsers.join(', ') %>

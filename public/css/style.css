@@ -24,19 +24,51 @@ img {
 #profilePic:hover{
     transform: rotate(5deg);    
 }
+#createEventButton{
+    border: solid #BE6E46 3px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(28, 28, 28, 0.9);
+    width: auto;
+    position:absolute;
+    top:220px;
+    right:30px;
+}
+#createEventButton:hover{
+    background-color: rgb(28, 28, 28);
+}
 #feedposts{
     border: solid #BE6E46 3px;
     border-radius: 10px;
     padding: 10px;
-    background-color: rgb(130, 163, 161, 0.5)
+    background-color: rgb(28, 28, 28, 0.8)
 }
 #feedposts:hover{
-    border: solid #BE6E46 4px;
-    background-color:rgb(130, 163, 161, 0.75);
+    background-color:rgb(28, 28, 28)
 }
 .headBg {
-    background-color: rgb(187, 216, 179, 0.1);
+    background-color: rgb(28, 28, 28)
   }
+.footBg {
+    background-color: rgb(23, 23, 23, 0.8);
+    margin-top: 10%;
+}
 .navbar{
     margin:0 10%
+}
+.btn{
+    background-color: #BE6E46;
+    border: solid white 2px;
+    width: auto;
+}
+.btn:hover{
+    background-color: white;
+    color: #BE6E46;
+    border: solid #BE6E46 2px;
+}
+.profile{
+    background-color: grey;
+    padding: 5%;
+    border-radius: 5px;
+    margin-top: 10%;
 }
