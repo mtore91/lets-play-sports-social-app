@@ -46,6 +46,15 @@ img {
 #feedposts:hover{
     background-color:rgb(28, 28, 28)
 }
+#profilePosts{
+    border: solid #BE6E46 3px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(28, 28, 28, 0.8)
+}
+#profilePosts:hover{
+    background-color:grey;
+}
 .headBg {
     background-color: rgb(28, 28, 28)
   }
@@ -66,20 +75,48 @@ img {
     color: #BE6E46;
     border: solid #BE6E46 2px;
 }
+.btn-outline-danger{
+    background-color: white;
+}
 .profile{
     background-color: rgb(40, 40, 40);
-    padding: 5%;
-    border-radius: 5px;
+    border: solid #BE6E46 2px;
+    padding: 1% 5% 5% 5%;
+    border-radius: 30px;
     margin-top: 10%;
 }
 .post{
     background-color: rgb(40, 40, 40);
+    border: solid #BE6E46 2px;
     padding-bottom:20px;
-    border-radius: 5px;
+    border-radius: 30px;
     margin-top: 10%;
     width: 75%;
 }
 .comment{
     width:75% !important;
     ;
+}
+.singleComment{
+    margin-left: 18%;
+    background: gray;
+    border: solid white 2px;
+    border-radius: 10px;
+    padding: 5px;
+}
+.gameOn{
+    background-color: #BE6E46;
+    border: solid orange 2px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    width:50px;
+    height:50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: smaller;
+    float: right;
 }

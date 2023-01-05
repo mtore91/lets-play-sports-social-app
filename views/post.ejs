@@ -7,7 +7,7 @@
         <%}%>
       <h2>Let's play <%= post.sport %></h2>
       <span><%= post.createdBy %> needs <%= post.playersNeeded %> <%= post.sport %> players</span>
-      <br><span>Time: <%= post.time %></span>
+      <br><span>Time: <%= post.date.toLocaleTimeString('en-UK').slice(0,-3) %></span>
       <br><span>Date: <%= post.date.toDateString() %></span> 
       <br><span>Address: <%= post.address %></span>
       <% if(post.sport.toLowerCase() == "soccer"){ %>
@@ -81,10 +81,10 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
-    <ul>
+    <ul style="list-style: none;">
       <% for(var i=0; i<comments.length; i++) {%>
-        <li class="col-6 justify-content-between mt-5">
-          User <%= comments[i].createdBy%> says: "<%= comments[i].comment%>"
+        <li class="col-6 justify-content-between mt-5 singleComment">
+          <%= comments[i].createdBy%> says: "<%= comments[i].comment%>"
         <%if(comments[i].createdById == user.id) {%>
         <form
           action="/comment/deleteComment/<%= post.id %>/<%= comments[i]._id %>?_method=DELETE"

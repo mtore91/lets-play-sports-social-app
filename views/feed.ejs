@@ -31,7 +31,10 @@
                   <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671195359/calvin-jung-CWon59n3AB8-unsplash_hjvzca.jpg" alt="field" id="event-img">
                 <% } %>
                 <% if(posts[i].playersNeeded +1 == posts[i].joinedUserNumber){ %>
-                  <span class="link-light">Enough players have joined, game on!</span>
+                  <div class="gameOn">
+                    <span>Game on!</span>
+                  </div>
+                  <span class="link-light">Enough players have joined!</span>
                 <%}%>
                 <% if(posts[i].playersNeeded+1 !== posts[i].joinedUserNumber){ %>
                   <span class="link-light"><%=posts[i].playersNeeded - posts[i].likes +1 %> player(s) currently needed</span>
@@ -45,11 +48,12 @@
               
             <% if(posts[i].joinedUsers.includes(user.userName)){ %>
               <span class="link-light"><strong>You have joined this game</strong> <br><br>
-                These players have joined so far: <%= posts[i].joinedUsers.join(', ') %></span>
+                These players are joining:<br> <%= posts[i].joinedUsers.join(', ') %></span>
             <%} else {%> 
               <span class="link-light">
-                These players have joined so far: <%= posts[i].joinedUsers.join(', ') %>
-              </span>
+                These players are joining: 
+              </span><br>
+              <span><%= posts[i].joinedUsers.join(', ') %></span>
               <%}%>
             <br>
             </a>
