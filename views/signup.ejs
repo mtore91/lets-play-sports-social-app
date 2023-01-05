@@ -30,7 +30,7 @@
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                       <label for="avatar" class="form-label">Select avatar</label>
                       <br>
                       <select onchange="changeImage()" id="mySelect" name="avatar">
@@ -49,7 +49,48 @@
                           document.getElementById("myImage").src = selectedValue;
                         }
                         </script>
+                    </div> -->
+                    <div class="mb-3">
+                      <label for="avatar" class="form-label">Select avatar</label>
+                      <br>
+                      <select onchange="changeImage()" id="mySelect" name="avatar">
+                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673264/bball_hhevab.jpg">Iverson</option>
+                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673260/soccer_pchgap.jpg">Messi</option>
+                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673263/tennis_v7wbpf.jpg">Federer</option>
+                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673260/street_pp7n8e.jpg">Ronaldinho</option>
+                        <option value="upload">Upload your own</option>
+                      </select>
+                      <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673264/bball_hhevab.jpg" id="myImage"> 
+                      <input type="file" id="customAvatar" style="display: none;" onchange="updateCustomImage()">
+                      <script>
+                        function changeImage() {
+                           // Get the selected option's value
+                           var selectedValue = document.getElementById("mySelect").value;
+                           if (selectedValue === "upload") {
+                             // Show the file input if the "upload" option is selected
+                             document.getElementById("customAvatar").style.display = "block";
+                             // Hide the image
+                             document.getElementById("myImage").style.display = "none";
+                           } else {
+                             // Update the image tag's source using the selected option's value
+                             document.getElementById("myImage").src = selectedValue;
+                             // Show the image
+                             document.getElementById("myImage").style.display = "block";
+                             document.getElementById("customAvatar").style.display = "none";
+                           }
+                        }
+                        
+                        function updateCustomImage() {
+                          // Update the image tag's source using the selected file's URL
+                          var customAvatar = document.getElementById("customAvatar");
+                          document.getElementById("myImage").src = URL.createObjectURL(customAvatar.files[0]);
+                          // Show the image
+                          document.getElementById("myImage").style.display = "block";
+                        }
+                      </script>
                     </div>
+                    
+                    
                     <button type="submit" class="btn btn-primary" value="Upload">Create profile</button>
                   </form>
             </section>

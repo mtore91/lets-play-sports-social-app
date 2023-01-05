@@ -9,7 +9,7 @@
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
           <div class="mt-5">
-            <h2>Add a post</h2>
+            <h2>Add a new game</h2>
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
                   <label for="sport" class="form-label">Sport</label>
@@ -42,10 +42,10 @@
             <% if(posts[i].date >= new Date() && posts[i].joinedUsers.includes(user.userName)){ %>
             <li class="col-6 justify-content-between mt-5" id="feedposts">
               <a href="/post/<%= posts[i]._id%>" class="link-light">
-                <%= posts[i].sport %> game at <%= posts[i].address %> on <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %> still needs <%= posts[i].playersNeeded - posts[i].likes %> players.
+                <%= posts[i].sport %> game at <%= posts[i].address %> on <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %> still needs <%= posts[i].playersNeeded+1 - posts[i].likes %> players.
               </a>
               <br>
-              <% if(posts[i].playersNeeded == posts[i].joinedUserNumber){ %>
+              <% if(posts[i].playersNeeded+1 == posts[i].joinedUserNumber){ %>
                 <span>Enough players have joined, game on!</span>
               <%}%>
               </li>
