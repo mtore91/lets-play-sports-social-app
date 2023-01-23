@@ -2,6 +2,8 @@ const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
 const cloudinary = require("../middleware/cloudinary");
+const multer = require("multer");
+const path = require("path");
 
 exports.getLogin = (req, res) => {
   if (req.user) {
@@ -85,14 +87,35 @@ exports.postSignup = (req, res, next) => {
     gmail_remove_dots: false,
   });
 
+  // const user = new User({
+  //   userName: req.body.userName,
+  //   email: req.body.email,
+  //   password: req.body.password,
+  //   avatar: req.body.avatar,
+  // });
+
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password,
-    avatar: req.body.avatar,
   });
 
-  User.findOne(
+  if (req.body.avatar == "upload") {
+  cloudinary.uploader.upload(req.file.path, (err, result) => {
+    if (err) {
+      return next(err);
+    }
+    const avatar = result.secure_url;
+    user.avatar = avatar;
+    checkExistingUser(user, req, res, next);
+  });
+} else {
+  user.avatar = req.body.avatar;
+  checkExistingUser(user, req, res, next);
+}
+
+  function checkExistingUser(user, req, res, next) {
+    User.findOne(
     { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
     (err, existingUser) => {
       if (err) {
@@ -116,5 +139,5 @@ exports.postSignup = (req, res, next) => {
         });
       });
     }
-  );
+  );}
 };
