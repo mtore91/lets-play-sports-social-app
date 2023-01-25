@@ -12,7 +12,7 @@
                         <div class="alert alert-info"><%= el.msg %></div>
                     <% }) %>    
                 <% } %>
-                <form action="/signup" method="POST">
+                <form action="/signup" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="userName" class="form-label">User Name</label>
                         <input type="text" class="form-control" id="userName" name="userName">
@@ -61,7 +61,7 @@
                         <option value="upload">Upload your own</option>
                       </select>
                       <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673264/bball_hhevab.jpg" id="myImage"> 
-                      <input type="file" id="customAvatar" style="display: none;" name="file" onchange="updateCustomImage()">
+                      <input type="file" id="customAvatar" class="form-control" style="display: none;" name="file" onchange="updateCustomImage()">
                       <script>
                         function changeImage() {
                            // Get the selected option's value
