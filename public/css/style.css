@@ -38,35 +38,35 @@ img {
     background-color: rgb(28, 28, 28);
 }
 #feedposts{
-    border: solid #BE6E46 3px;
+    
     border-radius: 10px;
     padding: 10px;
-    background-color: rgb(28, 28, 28, 0.8)
+    background-color: #011627;
 }
 #feedposts:hover{
     background-color:rgb(28, 28, 28)
 }
 #profilePosts{
-    border: solid #BE6E46 3px;
+   
     border-radius: 10px;
     padding: 10px;
-    background-color: rgb(28, 28, 28, 0.8)
+    background-color: #011627;
 }
 #profilePosts:hover{
-    background-color:grey;
+    background-color: #00070c;
 }
 .headBg {
-    background-color: rgb(28, 28, 28)
+    background-color: #011627;
   }
 .footBg {
-    background-color: rgb(23, 23, 23, 0.8);
+    background-color: #011627;
     margin-top: 10%;
 }
 .navbar{
     margin:0 10%
 }
 .btn{
-    background-color: #BE6E46;
+    background-color: #FF9F1C;
     border: solid white 2px;
     width: auto;
 }
@@ -87,7 +87,7 @@ img {
 }
 .post{
     background-color: rgb(40, 40, 40);
-    border: solid #BE6E46 2px;
+    border: solid #FF9F1C 2px;
     padding-bottom:20px;
     border-radius: 30px;
     margin-top: 10%;
@@ -105,7 +105,7 @@ img {
     padding: 5px;
 }
 .gameOn{
-    background-color: #BE6E46;
+    background-color: #FF9F1C;
     border: solid orange 2px;
     border-radius: 50%;
     color: white;
