@@ -9,7 +9,8 @@ module.exports = {
         likes: 0,
         post: req.params.id,
         createdBy: req.user.userName,
-        createdById: req.user.id
+        createdById: req.user.id,
+        userAvatar: req.user.avatar,
       });
       console.log("Comment has been added!");
       res.redirect("/post/"+req.params.id);

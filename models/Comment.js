@@ -17,6 +17,10 @@ const CommentSchema = new mongoose.Schema({
     type: String,
     ref: "User",
   },
+  userAvatar: {
+    type: String,
+    ref: "User"
+  },
   post: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Post",

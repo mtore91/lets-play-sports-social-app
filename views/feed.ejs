@@ -1,62 +1,77 @@
 <%- include('partials/header') -%>
   <div class="container">
     <div class="row justify-content-center mt-5">
-      <h1 class="text-dark text-center">Current games</h1>
-      <div id="createEventButton">
-        <a href="/profile" class="link-light">Create a new game</a>
-      </div>
+      <h1 class="text-dark text-center" style="font-weight:bold;">Current games</h1>
+      <a href="/profile" id="createEventButton">
+        <span>
+        Create a new game
+        </span>
+      </a>
       <ul class="row list-unstyled justify-content-evenly">
         <% for(var i=0; i<posts.length; i++) {%>
           <% if(posts[i].date >= new Date()){ %>
-            
-              <li class=" col-5 justify-content-evenly mt-5" id="feedposts">
+             
+              <li class=" col-5 justify-content-evenly mt-5" >
                 <a href="/post/<%= posts[i]._id%>">
+                 <div id="feedposts">
+                  <h6 class="postTitle"><%=posts[i].sport[0].toUpperCase()+posts[i].sport.slice(1).toLowerCase() %> game</h6>
+                  
                 <% if(posts[i].sport.toLowerCase() == "soccer"){ %>
-                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671192962/connor-coyne-OgqWLzWRSaI-unsplash_eyljvz.jpg" alt="soccer" id="event-img">
+                  <img src=https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671192962/connor-coyne-OgqWLzWRSaI-unsplash_eyljvz.jpg alt="soccer" id="event-img">
                 <% } else if(posts[i].sport.toLowerCase() == "basketball"){ %>
-                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671193099/tom-briskey-HM3WZ4B1gvM-unsplash_bun4ug.jpg" alt="basketball" id="event-img">
+                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671193099/tom-briskey-HM3WZ4B1gvM-unsplash_bun4ug.jpg" alt="basketball" id="event-img">
                 <% } else if(posts[i].sport.toLowerCase() == "baseball"){ %>
-                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671194457/caitlin-conner-i_vYjW5A6NU-unsplash_bjevav.jpg" alt="baseball" id="event-img">
+                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671194457/caitlin-conner-i_vYjW5A6NU-unsplash_bjevav.jpg" alt="baseball" id="event-img">
                 <% } else if(posts[i].sport.toLowerCase() == "tennis"){ %>
-                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671193033/hoi-pham-eLZwsPO8cCQ-unsplash_hssu88.jpg" alt="tennis" id="event-img">
+                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671193033/hoi-pham-eLZwsPO8cCQ-unsplash_hssu88.jpg" alt="tennis" id="event-img">
                 <% } else if(posts[i].sport.toLowerCase() == "padel"){ %>
-                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671193138/tomasz-krawczyk-M2x3A8Q4JbY-unsplash_zbda0x.jpg" alt="padel" id="event-img">
+                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671193138/tomasz-krawczyk-M2x3A8Q4JbY-unsplash_zbda0x.jpg" alt="padel" id="event-img">
                 <% } else if(posts[i].sport.toLowerCase() == "volleyball"){ %>
-                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671193390/miguel-teirlinck-VDkRsT649C0-unsplash_a7blwv.jpg" alt="volleyball" id="event-img">
+                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671193390/miguel-teirlinck-VDkRsT649C0-unsplash_a7blwv.jpg" alt="volleyball" id="event-img">
                 <% } else if(posts[i].sport.toLowerCase() == "rugby"){ %>
-                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671193554/hanson-lu-Jub7DPwC2U8-unsplash_znogfe.jpg" alt="rugby" id="event-img">
+                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671193554/hanson-lu-Jub7DPwC2U8-unsplash_znogfe.jpg" alt="rugby" id="event-img">
                 <% } else if(posts[i].sport.toLowerCase() == "table tennis" || posts[i].sport.toLowerCase() == "ping pong"){ %>
-                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671193605/lisa-keffer-3B8nIiT-Pmc-unsplash_odj7bi.jpg" alt="tabletennis" id="event-img">
+                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671193605/lisa-keffer-3B8nIiT-Pmc-unsplash_odj7bi.jpg" alt="tabletennis" id="event-img">
                 <% } else { %> 
-                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1671195359/calvin-jung-CWon59n3AB8-unsplash_hjvzca.jpg" alt="field" id="event-img">
+                  <img src="https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671195359/calvin-jung-CWon59n3AB8-unsplash_hjvzca.jpg" alt="field" id="event-img">
                 <% } %>
                 <% if(posts[i].playersNeeded +1 == posts[i].joinedUserNumber){ %>
-                  <div class="gameOn">
-                    <span>Game on!</span>
-                  </div>
                   <span class="link-light">Enough players have joined!</span>
                 <%}%>
                 <% if(posts[i].playersNeeded+1 !== posts[i].joinedUserNumber){ %>
-                  <span class="link-light"><%=posts[i].playersNeeded - posts[i].likes +1 %> player(s) currently needed</span>
+                  <span class="link-light"><%=posts[i].playersNeeded - posts[i].likes +1 %> more player(s) needed</span>
                 <%}%><br>
+            
+            <span class="link-light">When: <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %>.
+            </span>
+            <br>
             <span class="link-light">
-               <%=posts[i].sport[0].toUpperCase()+posts[i].sport.slice(1).toLowerCase() %> game at <%= posts[i].address %> on <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %>.
+               Where: <%= posts[i].address %>
             </span>
             <br> 
             <br>
              
-              
+            <% if(posts[i].playersNeeded +1 == posts[i].joinedUserNumber){ %>
+              <div class="gameOn">
+                <span>Game on!</span>
+              </div>
+            <%}%>  
             <% if(posts[i].joinedUsers.includes(user.userName)){ %>
-              <span class="link-light"><strong>You have joined this game</strong> <br><br>
-                These players are joining:<br> <%= posts[i].joinedUsers.join(', ') %></span>
+              <div class="userJoined">
+                <span>You're in</span>
+              </div>
+              <span class="link-light">
+              These players are joining:<br> <%= posts[i].joinedUsers.join(', ') %></span>
+                
             <%} else {%> 
               <span class="link-light">
                 These players are joining: 
               </span><br>
-              <span><%= posts[i].joinedUsers.join(', ') %></span>
+              <span class="link-light"><%= posts[i].joinedUsers.join(', ') %></span>
               <%}%>
-            <br>
-            </a>
+                <br>
+               </a>
+              </div>
             </li>
             
           <%}%>

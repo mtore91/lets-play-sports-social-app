@@ -1,5 +1,9 @@
 body{
     color: white;
+    
+}
+a{
+    text-decoration: none;
 }
 img {
     width: 150px;
@@ -9,8 +13,14 @@ img {
 }
 
 #event-img {
-    width: 100px;
+    width: 80px;
     border-radius: 50%;
+    float:right;
+}
+#event-img-post {
+    width: 125px;
+    border-radius: 50%;
+    float:right;
 }
 #myImage{
     width:250px;
@@ -22,41 +32,51 @@ img {
     border-radius: 50%;
 }
 #profilePic:hover{
-    transform: rotate(5deg);    
+    transform: rotate(-5deg);    
+}
+#profilePicComment{
+    width:50px;
+    border-radius:50%;
 }
 #createEventButton{
     border: solid #BE6E46 3px;
-    border-radius: 10px;
+    color: white;
+    border-radius: 5px;
     padding: 10px;
-    background-color: rgb(28, 28, 28, 0.9);
+    background-color: #FF9F1C;
     width: auto;
     position:absolute;
     top:220px;
     right:30px;
 }
 #createEventButton:hover{
-    background-color: rgb(28, 28, 28);
+    background-color: whitesmoke;
+    color: #BE6E46;
 }
 #feedposts{
-    
+    border-bottom: #FF9F1C 5px solid;
     border-radius: 10px;
     padding: 10px;
     background-color: #011627;
 }
 #feedposts:hover{
-    background-color:rgb(28, 28, 28)
+    opacity: 0.9;
+    border-bottom: #FF9F1C 2px solid;
 }
 #profilePosts{
    
     border-radius: 10px;
     padding: 10px;
     background-color: #011627;
+    width:48%;
+    margin: 0 1%;
 }
 #profilePosts:hover{
     background-color: #00070c;
 }
 .headBg {
     background-color: #011627;
+    height:10%;
   }
 .footBg {
     background-color: #011627;
@@ -77,21 +97,33 @@ img {
 }
 .btn-outline-danger{
     background-color: white;
+    border:none;
+}
+.btn-outline-danger:hover{
+    font-weight: bold;
+    color: red;
+    border: solid 1px red;
 }
 .profile{
-    background-color: rgb(40, 40, 40);
-    border: solid #BE6E46 2px;
+    background-color: #011627;
     padding: 1% 5% 5% 5%;
     border-radius: 30px;
     margin-top: 10%;
 }
 .post{
-    background-color: rgb(40, 40, 40);
-    border: solid #FF9F1C 2px;
+    background-color: #011627;
+    border-bottom: #FF9F1C 5px solid;
     padding-bottom:20px;
     border-radius: 30px;
-    margin-top: 10%;
+    margin-top: 6%;
     width: 75%;
+    font-size: large;
+}
+.postTitle{
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
 .comment{
     width:75% !important;
@@ -99,10 +131,11 @@ img {
 }
 .singleComment{
     margin-left: 18%;
-    background: gray;
-    border: solid white 2px;
+    background: white;
+    border-bottom: solid #FF9F1C 2px;
     border-radius: 10px;
     padding: 5px;
+    color:#011627;
 }
 .gameOn{
     background-color: #FF9F1C;
@@ -110,8 +143,25 @@ img {
     border-radius: 50%;
     color: white;
     text-decoration: none;
-    width:50px;
-    height:50px;
+    width:55px;
+    height:55px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: smaller;
+    float: right;
+    margin-left: 10px;
+}
+.userJoined{
+    background-color: #FF9F1C;
+    border: solid orange 2px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    width:55px;
+    height:55px;
     text-align: center;
     display: flex;
     justify-content: center;
