@@ -68,6 +68,7 @@ module.exports = {
             joinedUsers: [req.user.userName],
             joinedUserIds: [req.user.id],
             joinedUserNumber: 1,
+            commentCount: 0,
         };
 
         // If an image was submitted, add it to the newPost object

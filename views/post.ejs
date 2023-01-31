@@ -10,7 +10,7 @@
           <span>Game on!</span>
         </div>
       <%}%>  
-      <h2 style="font-weight: bold; display: flex; justify-content: center; border-bottom: solid 2px orange;">Let's play <%= post.sport.toLowerCase() %></h2>
+      <h2 style="padding-bottom:4%; display: flex; justify-content: center; border-bottom: solid 2px orange;">Let's play <%= post.sport.toLowerCase() %></h2>
       <br>
       <% if(post.sport.toLowerCase() == "soccer"){ %>
         <img src="https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671192962/connor-coyne-OgqWLzWRSaI-unsplash_eyljvz.jpg" alt="soccer" id="event-img-post">
@@ -42,31 +42,35 @@
         <%}%>
       <br>
       <br>
-      <div class="row justify-content-between">
+      <div class="row justify-content-between" style="border-top:solid 2px orange; padding-top:4%;">
         <h5 class="col-4">Players still needed: <%= post.playersNeeded - post.likes + 1 %></h5>
         <h5 class="col-4">Players joining: <%= post.joinedUsers.join(', ') %></h5>
       </div>
+      <br>
       <div class="row justify-content-between">
         <% if(post.joinedUsers.includes(user.userName) && post.createdyBy !== user.userName){ %>
         <form
-          class="col-1"
+          class="col-3"
           action="/post/unlikePost/<%= post.id %>?_method=PUT"
           method="POST"
         >
           <button class="btn btn-primary fa fa-user-minus" type="submit"></button>
+          <br>
+          <span style="font-size:small">Opt out</span>
         </form> 
-        <br>
-        <span>You have already joined this game. Click button to unjoin.</span> 
+         
         <%}%>
         <% if(post.playersNeeded+1 > post.joinedUserNumber && post.joinedUsers.includes(user.userName)===false){ %>
           <form
-          class="col-1"
+          class="col-3"
           action="/post/likePost/<%= post.id %>?_method=PUT"
           method="POST"
         >
           <button class="btn btn-primary fa fa-user-plus" type="submit"></button>
+          <br>
+          <span style="font-size: small;">Join game</span>
         </form>
-        <h5>Join game</h5>
+        
         <%}%>
         
         <%if(post.createdById == user.id){ %>
@@ -76,7 +80,10 @@
           class="col-3"
         >
           <button class="btn btn-primary fa fa-trash" type="submit"></button>
+          <br>
+          <span style="font-size: small;">Delete game</span>
         </form>
+        
         <%}%>
       </div>
     </div><br>
@@ -96,8 +103,10 @@
         <img src="<%=comments[i].userAvatar %>" alt="User avatar" id="profilePicComment">
           <span style="text-decoration: underline;"><%= comments[i].createdBy%></span>: <%= comments[i].comment%>        
         </li>
-        
       <% } %>
+      <%if(comments.length === 0) {%>
+        <span style="margin-left:12.5%; color: lightgray;">No comments yet</span>
+        <%}%>
     </ul>
     <div class="mt-5 comment">
       <h3>Add a comment</h3>
@@ -109,8 +118,8 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
+    <div class="col-6 mt-5" style="display: flex; justify-content: center;">
+      <a class="btn btn-primary" style="margin-right:10px;" href="/profile">Return to Profile</a>
       <a class="btn btn-primary" href="/feed">Return to Feed</a>
     </div>
   </div>

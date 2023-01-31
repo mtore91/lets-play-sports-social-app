@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
   <div class="container">
     <div class="row justify-content-center mt-5">
-      <h1 class="text-dark text-center" style="font-weight:bold;">Current games</h1>
+      <h1 class="text-light text-center" style="font-weight:bold;">Current games</h1>
       <a href="/profile" id="createEventButton">
         <span>
         Create a new game
@@ -14,6 +14,11 @@
               <li class=" col-5 justify-content-evenly mt-5" >
                 <a href="/post/<%= posts[i]._id%>">
                  <div id="feedposts">
+                  <%if(posts[i].commentCount>0){%>
+                    <div class="commentNotification">
+                      <span><%= posts[i].commentCount%></span> 
+                    </div>
+                  <%}%> 
                   <h6 class="postTitle"><%=posts[i].sport[0].toUpperCase()+posts[i].sport.slice(1).toLowerCase() %> game</h6>
                   
                 <% if(posts[i].sport.toLowerCase() == "soccer"){ %>
@@ -36,16 +41,16 @@
                   <img src="https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671195359/calvin-jung-CWon59n3AB8-unsplash_hjvzca.jpg" alt="field" id="event-img">
                 <% } %>
                 <% if(posts[i].playersNeeded +1 == posts[i].joinedUserNumber){ %>
-                  <span class="link-light">Enough players have joined!</span>
+                  <span class="feedpostText">Enough players have joined!</span>
                 <%}%>
                 <% if(posts[i].playersNeeded+1 !== posts[i].joinedUserNumber){ %>
-                  <span class="link-light"><%=posts[i].playersNeeded - posts[i].likes +1 %> more player(s) needed</span>
+                  <span class="feedpostText"><%=posts[i].playersNeeded - posts[i].likes +1 %> more player(s) needed</span>
                 <%}%><br>
             
-            <span class="link-light">When: <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %>.
+            <span class="feedpostText">When: <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %>.
             </span>
             <br>
-            <span class="link-light">
+            <span class="feedpostText">
                Where: <%= posts[i].address %>
             </span>
             <br> 
@@ -60,16 +65,16 @@
               <div class="userJoined">
                 <span>You're in</span>
               </div>
-              <span class="link-light">
+              <span class="feedpostText">
               These players are joining:<br> <%= posts[i].joinedUsers.join(', ') %></span>
                 
             <%} else {%> 
-              <span class="link-light">
+              <span class="feedpostText">
                 These players are joining: 
               </span><br>
-              <span class="link-light"><%= posts[i].joinedUsers.join(', ') %></span>
+              <span class="feedpostText"><%= posts[i].joinedUsers.join(', ') %></span>
               <%}%>
-                <br>
+                <br>               
                </a>
               </div>
             </li>

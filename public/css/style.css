@@ -1,6 +1,6 @@
 body{
     color: white;
-    
+    background-color: #093151;
 }
 a{
     text-decoration: none;
@@ -39,7 +39,7 @@ img {
     border-radius:50%;
 }
 #createEventButton{
-    border: solid #BE6E46 3px;
+    border: solid white 3px;
     color: white;
     border-radius: 5px;
     padding: 10px;
@@ -57,26 +57,32 @@ img {
     border-bottom: #FF9F1C 5px solid;
     border-radius: 10px;
     padding: 10px;
-    background-color: #011627;
+    background-color: white;
 }
 #feedposts:hover{
-    opacity: 0.9;
+    opacity: 0.8;
     border-bottom: #FF9F1C 2px solid;
+}
+.feedpostText{
+    color:#093151
 }
 #profilePosts{
    
     border-radius: 10px;
     padding: 10px;
-    background-color: #011627;
+    background-color: black;
     width:48%;
     margin: 0 1%;
 }
 #profilePosts:hover{
-    background-color: #00070c;
+    opacity: 0.7;
 }
 .headBg {
     background-color: #011627;
     height:10%;
+    border-bottom: #FF9F1C solid 1px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
   }
 .footBg {
     background-color: #011627;
@@ -109,6 +115,7 @@ img {
     padding: 1% 5% 5% 5%;
     border-radius: 30px;
     margin-top: 10%;
+    border-bottom:#FF9F1C 5px solid;
 }
 .post{
     background-color: #011627;
@@ -120,7 +127,7 @@ img {
     font-size: large;
 }
 .postTitle{
-    color: white;
+    color: #011627;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -162,6 +169,21 @@ img {
     text-decoration: none;
     width:55px;
     height:55px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: smaller;
+    float: right;
+}
+.commentNotification{
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    width:30px;
+    height:30px;
     text-align: center;
     display: flex;
     justify-content: center;

@@ -1,4 +1,5 @@
 const Comment = require("../models/Comment");
+const Post = require("../models/Post");
 
 module.exports = {
   
@@ -12,6 +13,11 @@ module.exports = {
         createdById: req.user.id,
         userAvatar: req.user.avatar,
       });
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        { $inc: { commentCount: 1 } },
+        { upsert: true }
+      );
       console.log("Comment has been added!");
       res.redirect("/post/"+req.params.id);
     } catch (err) {
@@ -38,6 +44,10 @@ module.exports = {
       // let comment = await Comment.deleteOne({ _id: req.body.comment.id});
       // Delete comment from db
       await Comment.deleteOne({ _id: req.params.commentid });
+      await Post.findOneAndUpdate(
+        { _id: req.params.postid },
+        { $inc: { commentCount: -1 } }
+      );
       console.log("Deleted Comment");
       res.redirect('/post/'+req.params.postid);
     } catch (err) {
