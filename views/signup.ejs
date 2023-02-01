@@ -14,42 +14,30 @@
                 <% } %>
                 <form action="/signup" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="userName" class="form-label">User Name</label>
-                        <input type="text" class="form-control" id="userName" name="userName">
+                        <label for="userName" class="form-label">Choose your user name</label>
+                        <input type="text" class="form-control" placeholder="User name" id="userName" name="userName">
                       </div>
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                      <label for="exampleInputEmail1" class="form-label">Type your email address</label>
+                      <input type="email" class="form-control" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
                       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" name="password">
+                      <label for="password" class="form-label">Choose your password</label>
+                      <input type="password" class="form-control" placeholder="Password"id="password" name="password">
                     </div>
                     <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                        <label for="confirmPassword" class="form-label">Confirm your password</label>
+                        <input type="password" class="form-control" placeholder="Confirm password" id="confirmPassword" name="confirmPassword">
                     </div>
-                    <!-- <div class="mb-3">
-                      <label for="avatar" class="form-label">Select avatar</label>
-                      <br>
-                      <select onchange="changeImage()" id="mySelect" name="avatar">
-                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673264/bball_hhevab.jpg">Iverson</option>
-                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673260/soccer_pchgap.jpg">Messi</option>
-                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673263/tennis_v7wbpf.jpg">Federer</option>
-                        <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673260/street_pp7n8e.jpg">Ronaldinho</option>
-                      </select>
-                      <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673264/bball_hhevab.jpg" id="myImage"> 
-                      <script>
-                        function changeImage() {
-                          // Get the selected option's value
-                          var selectedValue = document.getElementById("mySelect").value;
-                          
-                          // Update the image tag's source using the selected option's value
-                          document.getElementById("myImage").src = selectedValue;
-                        }
-                        </script>
-                    </div> -->
+                    <div class="mb-3">
+                      <label for="autocomplete" class="form-label">Type and select your city or address</label>
+                      <input id="autocomplete" type="text" class="form-control" placeholder="Enter your address">
+                     
+                      <input type="hidden" id="coordinates" name="coordinates">
+                      <input  type="hidden" id="address" name="address"> 
+                      <div class="text-white">This is to find games close to you, it doesn't need to be your exact address</div>
+                    </div>
                     <div class="mb-3">
                       <label for="avatar" class="form-label">Select avatar</label>
                       <br>
@@ -86,7 +74,25 @@
                           document.getElementById("myImage").src = URL.createObjectURL(customAvatar.files[0]);
                           // Show the image
                           document.getElementById("myImage").style.display = "block";
+                        };
+                      </script>
+                      <script>
+                        
+                          function initMap() {
+                          const autocomplete = new google.maps.places.Autocomplete(document.getElementById("autocomplete"));
+                          
+                          const geocoder = new google.maps.Geocoder();
+
+                          autocomplete.addListener('place_changed', () => {
+                            const place = autocomplete.getPlace();
+                            const latitude = place.geometry.location.lat();
+                            const longitude = place.geometry.location.lng();
+                            console.log(`Latitude: ${latitude} | Longitude: ${longitude}`);
+                            document.getElementById("coordinates").value = [latitude, longitude];
+                            document.getElementById("address").value = place.formatted_address;
+                          });
                         }
+                      
                       </script>
                     </div>
                     

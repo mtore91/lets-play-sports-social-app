@@ -90,6 +90,8 @@ exports.postSignup = async (req, res, next) => {
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password,
+    coordinates: JSON.parse(`[${req.body.coordinates}]`),
+    address: req.body.address,
   });
 
   if (req.body.avatar === 'upload') {
