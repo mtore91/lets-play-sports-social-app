@@ -35,7 +35,10 @@
                       <input id="autocomplete" type="text" class="form-control" placeholder="Enter your address">
                      
                       <input type="hidden" id="coordinates" name="coordinates">
-                      <input  type="hidden" id="address" name="address"> 
+                      <input  type="hidden" id="formattedAddress" name="formattedAddress"> 
+                      <input  type="hidden" id="streetAddress" name="streetAddress"> 
+                      <input  type="hidden" id="city" name="city"> 
+                      <input  type="hidden" id="country" name="country"> 
                       <div class="text-white">This is to find games close to you, it doesn't need to be your exact address</div>
                     </div>
                     <div class="mb-3">
@@ -48,7 +51,7 @@
                         <option value="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673260/street_pp7n8e.jpg">Ronaldinho</option>
                         <option value="upload">Upload your own</option>
                       </select>
-                      <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673264/bball_hhevab.jpg" id="myImage"> 
+                      <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1670673264/bball_hhevab.jpg" id="myImage" style="display: block;"> 
                       <input type="file" id="customAvatar" class="form-control" style="display: none;" name="file" onchange="updateCustomImage()">
                       <script>
                         function changeImage() {
@@ -77,8 +80,7 @@
                         };
                       </script>
                       <script>
-                        
-                          function initMap() {
+                        function initMap() {
                           const autocomplete = new google.maps.places.Autocomplete(document.getElementById("autocomplete"));
                           
                           const geocoder = new google.maps.Geocoder();
@@ -88,10 +90,32 @@
                             const latitude = place.geometry.location.lat();
                             const longitude = place.geometry.location.lng();
                             console.log(`Latitude: ${latitude} | Longitude: ${longitude}`);
-                            document.getElementById("coordinates").value = [latitude, longitude];
-                            document.getElementById("address").value = place.formatted_address;
+                            console.log(place);
+                            document.getElementById("coordinates").value = [longitude,latitude];
+                            document.getElementById("formattedAddress").value = place.formatted_address;
+
+                            let streetAddress, city, country;
+                            for (let i = 0; i < place.address_components.length; i++) {
+                              let addressType = place.address_components[i].types[0];
+                              if (addressType === "street_number") {
+                                streetAddress = place.address_components[i].long_name + " ";
+                              }
+                              if (addressType === "route") {
+                                streetAddress = streetAddress ? streetAddress += place.address_components[i].long_name : place.address_components[i].long_name;
+                              }
+                              if (addressType === "postal_town") {
+                                city = place.address_components[i].long_name;
+                              }
+                              if (addressType === "country") {
+                                country = place.address_components[i].long_name;
+                              }
+                            }
+                          
+                            document.getElementById("streetAddress").value = streetAddress;
+                            document.getElementById("city").value = city;
+                            document.getElementById("country").value = country;
                           });
-                        }
+                        }; 
                       
                       </script>
                     </div>

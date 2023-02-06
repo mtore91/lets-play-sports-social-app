@@ -1,7 +1,19 @@
 <%- include('partials/header') -%>
   <div class="container">
     <div class="row justify-content-center mt-5">
-      <h1 class="text-light text-center" style="font-weight:bold;">Current games</h1>
+      <h1 class="text-light text-center" style="font-weight:bold;">Current games</h1>  
+      <div class="mb-3">
+        <label for="form-control">Show games within:</label>
+        <br>
+        <select id="distance-select">
+          <option value="5000">5 km</option>
+          <option value="10000">10 km</option>
+          <option value="20000">20 km</option>
+          <option value="50000">50 km</option>
+          <option value="100000">100 km</option>
+          <option value="999999999">Show all games</option>
+        </select>
+      </div>
       <a href="/profile" id="createEventButton">
         <span>
         Create a new game
@@ -20,7 +32,10 @@
                     </div>
                   <%}%> 
                   <h6 class="postTitle"><%=posts[i].sport[0].toUpperCase()+posts[i].sport.slice(1).toLowerCase() %> game</h6>
-                  
+                  <span class=" distanceText">
+                    <%= (posts[i].distance / 1000).toFixed(1) %> km from you
+                  </span>
+                  <br>
                 <% if(posts[i].sport.toLowerCase() == "soccer"){ %>
                   <img src=https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671192962/connor-coyne-OgqWLzWRSaI-unsplash_eyljvz.jpg alt="soccer" id="event-img">
                 <% } else if(posts[i].sport.toLowerCase() == "basketball"){ %>
@@ -42,17 +57,24 @@
                 <% } %>
                 <% if(posts[i].playersNeeded +1 == posts[i].joinedUserNumber){ %>
                   <span class="feedpostText">Enough players have joined!</span>
-                <%}%>
-                <% if(posts[i].playersNeeded+1 !== posts[i].joinedUserNumber){ %>
-                  <span class="feedpostText"><%=posts[i].playersNeeded - posts[i].likes +1 %> more player(s) needed</span>
-                <%}%><br>
-            
+                <%}%>            
             <span class="feedpostText">When: <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %>.
             </span>
             <br>
             <span class="feedpostText">
-               Where: <%= posts[i].address %>
+               Where: <%
+               const address = posts[i].address;
+               const addressParts = address.split(',');
+               const firstPart = addressParts[0].replace(/\d{2,}/g, '');
+               const secondPart = addressParts[1].replace(/\d{2,}/g, '');
+               %>
+               <%= firstPart %>, <%= secondPart %>
             </span>
+            <br>
+            <br>
+            <% if(posts[i].playersNeeded+1 !== posts[i].joinedUserNumber){ %>
+              <span class="feedpostText"><%=posts[i].playersNeeded - posts[i].likes +1 %> more player(s) needed</span>
+            <%}%>
             <br> 
             <br>
              

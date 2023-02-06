@@ -3,64 +3,87 @@
   <div class="row mt-5">
       <div class="col-6">
           <div>
-              <p><strong><%= user.userName %>'s profile</strong>: </p>
+              <h3><strong><%= user.userName %>'s profile</strong>: </h3>
               <img src="<%= user.avatar %>" alt="" id="profilePic">
               <p><strong>Email</strong>: <%= user.email %></p>
-              <p><strong>Location</strong>: <%= user.address %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+              <p><strong>Location</strong>: <%= user.formattedAddress %></p>
           </div>
           <div class="mt-5">
-            <h2>Add a new game</h2>
-            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="sport" class="form-label">Sport</label>
-                  <input type="text" class="form-control" id="sport" name="sport">
-              </div>
-              <div class="mb-3">
-                <label for="playersNeeded" class="form-label">Players needed</label>
-                <textarea class="form-control" id="playersNeeded" name="playersNeeded"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <textarea class="form-control" id="address" name="address"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="address" class="form-label">Date</label>
-                <input type="datetime-local" class="form-control" id="date" name="date">
-              </div>
-              <!-- <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-              </div> -->
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-            </form>
-          </div>
+            <h3>Games you have currently joined</h3>
+            <ul class="row list-unstyled">
+              <% for(let i=0; i<posts.length; i++) {%>
+                <% if(posts[i].date >= new Date() && posts[i].joinedUsers.includes(user.userName)){ %>
+                <li class="col-6 justify-content-between mt-5" id="profilePosts">
+                  <a href="/post/<%= posts[i]._id%>" class="link-light">
+                    <%= posts[i].sport %> game at <%= posts[i].address.split(',')[0] %>
+                    on <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %> still needs <%= posts[i].playersNeeded+1 - posts[i].likes %> player(s).
+                  </a>
+                  <br>
+                  <% if(posts[i].playersNeeded+1 == posts[i].joinedUserNumber){ %>
+                    <div class="gameOn">
+                      <span>Game on!</span>
+                    </div>
+                    <span>Enough players have joined!</span>
+                  <%}%>
+                  </li>
+                  <%}%>
+              <% } %>
+            </ul> 
+            <div class="row justify-content-center mt-5">
+              <a class="btn btn-primary" href="/feed">Return to Feed</a>
+            </div>     
       </div>
+      
+      </div> 
       <div class="col-6">
-        <h3>Games you have currently joined</h3>
-        <ul class="row list-unstyled">
-          <% for(let i=0; i<posts.length; i++) {%>
-            <% if(posts[i].date >= new Date() && posts[i].joinedUsers.includes(user.userName)){ %>
-            <li class="col-6 justify-content-between mt-5" id="profilePosts">
-              <a href="/post/<%= posts[i]._id%>" class="link-light">
-                <%= posts[i].sport %> game at <%= posts[i].address %> on <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %> still needs <%= posts[i].playersNeeded+1 - posts[i].likes %> player(s).
-              </a>
-              <br>
-              <% if(posts[i].playersNeeded+1 == posts[i].joinedUserNumber){ %>
-                <div class="gameOn">
-                  <span>Game on!</span>
-                </div>
-                <span>Enough players have joined!</span>
-              <%}%>
-              </li>
-              <%}%>
-          <% } %>
-        </ul> 
-        <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div> 
-        
-      </div>  
+        <h3>Add a new game</h3>
+        <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+          <div class="mb-3">
+              <label for="sport" class="form-label">Sport</label>
+              <input type="text" class="form-control" id="sport" name="sport">
+          </div>
+          <div class="mb-3">
+            <label for="playersNeeded" class="form-label">Players needed</label>
+            <input type="text" class="form-control" id="playersNeeded" name="playersNeeded"></input>
+          </div>
+          <!-- <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" name="address"></input>
+          </div> -->
+          <div class="mb-3">
+            <label for="autocomplete" class="form-label">Where you'll play</label>
+            <input id="autocomplete" type="text" class="form-control" placeholder="Enter the address">
+            <input type="hidden" id="coordinates" name="coordinates">
+            <input  type="hidden" id="formattedAddress" name="formattedAddress"> 
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Date and time</label>
+            <input type="datetime-local" class="form-control" id="date" name="date">
+          </div>
+          <!-- <div class="mb-3">
+            <label for="imgUpload" class="form-label">Image</label>
+            <input type="file" class="form-control" id="imageUpload" name="file">
+          </div> -->
+          <script>
+            function initMap() {
+              const autocomplete = new google.maps.places.Autocomplete(document.getElementById("autocomplete"));
+              
+              const geocoder = new google.maps.Geocoder();
+
+              autocomplete.addListener('place_changed', () => {
+                const place = autocomplete.getPlace();
+                const latitude = place.geometry.location.lat();
+                const longitude = place.geometry.location.lng();
+                console.log(`Latitude: ${latitude} | Longitude: ${longitude}`);
+                console.log(place);
+                document.getElementById("coordinates").value = [longitude,latitude];
+                document.getElementById("formattedAddress").value = place.formatted_address;
+              });
+            }; 
+          </script>
+          <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+        </form>
+      </div> 
     </div>
   </div>
 </div>

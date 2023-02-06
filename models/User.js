@@ -1,19 +1,38 @@
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
-
+const pointSchema = new mongoose.Schema({
+  type: {
+    type: String,
+    enum: ['Point'],
+    required: true
+  },
+  coordinates: {
+    type: [Number],
+    required: true
+  }
+});
 const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
   password: String,
   avatar: String,
   coordinates: {
-    type: [Number], 
-    required: true, 
-    index: '2dsphere'
-},
-  address: { type:String },
+    type: {
+      type: String,
+      enum: ['Point'],
+      required: true
+    },
+    coordinates: {
+      type: [Number],
+      required: true
+    }
+  },
+  formattedAddress:String,
+  streetAddress:String,
+  city:String,
+  country:String,
 });
-
+UserSchema.index({ "coordinates": "2dsphere" })
 // Password hash middleware.
 
 UserSchema.pre("save", function save(next) {

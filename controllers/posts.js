@@ -11,14 +11,38 @@ module.exports = {
       console.log(err);
     }
   },
+  // getFeed: async (req, res) => {
+  //   try {
+  //     const posts = await Post.find().sort({ date: "asc" }).lean();
+  //     res.render("feed.ejs", { posts: posts, user: req.user });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },  
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ date: "asc" }).lean();
+      const userLocation = req.user.coordinates.coordinates;
+      const maxDistance = 15000;
+
+      const posts = await Post.aggregate([
+        {
+          $geoNear: {
+            near: { type: "Point", coordinates: userLocation },
+            maxDistance: maxDistance,
+            distanceField: "distance",
+            spherical: true
+          }
+        },
+        {
+          $sort: { date: 1 }
+        }
+      ]);
       res.render("feed.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
     }
-  },
+  }
+, 
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
@@ -63,14 +87,16 @@ module.exports = {
             createdBy: req.user.userName,
             date: req.body.date,
             time: req.body.time,
-            address: req.body.address,
+            address: req.body.formattedAddress,
+            coordinates: { type: 'Point',
+              coordinates: JSON.parse(`[${req.body.coordinates}]`)
+          },
             playersNeeded: req.body.playersNeeded,
             joinedUsers: [req.user.userName],
             joinedUserIds: [req.user.id],
             joinedUserNumber: 1,
             commentCount: 0,
         };
-
         // If an image was submitted, add it to the newPost object
         if (req.file) {
             const result = await cloudinary.uploader.upload(req.file.path);
