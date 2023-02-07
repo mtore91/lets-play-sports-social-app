@@ -22,9 +22,11 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const userLocation = req.user.coordinates.coordinates;
-      const maxDistance = 15000;
-
-      const posts = await Post.aggregate([
+      const selectedDistance = Number(req.query.selectedDistance);
+      const selectedSport = req.query.selectedSport || 'all'
+      const maxDistance = selectedDistance || 5000;
+      console.log(maxDistance)
+      let query = [
         {
           $geoNear: {
             near: { type: "Point", coordinates: userLocation },
@@ -36,13 +38,20 @@ module.exports = {
         {
           $sort: { date: 1 }
         }
-      ]);
-      res.render("feed.ejs", { posts: posts, user: req.user });
+      ];
+  
+      if (selectedSport !== 'all') {
+        query.push({
+          $match: { sport: selectedSport }
+        });
+      }
+  
+      const posts = await Post.aggregate(query);
+      res.render("feed.ejs", { posts: posts, user: req.user, selectedDistance: selectedDistance, selectedSport:selectedSport });
     } catch (err) {
       console.log(err);
     }
-  }
-, 
+  }, 
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
@@ -80,8 +89,10 @@ module.exports = {
   // },
   createPost: async (req, res) => {
     try {
+        const sport = req.body.sport;
+        const formattedSport = sport.charAt(0).toUpperCase() + sport.slice(1).toLowerCase();
         const newPost = {
-            sport: req.body.sport,
+            sport: formattedSport,
             likes: 1,
             createdById: req.user.id,
             createdBy: req.user.userName,

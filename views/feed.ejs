@@ -1,18 +1,46 @@
 <%- include('partials/header') -%>
   <div class="container">
     <div class="row justify-content-center mt-5">
-      <h1 class="text-light text-center" style="font-weight:bold;">Current games</h1>  
+      <h1 class="text-light text-center" style="font-weight:bold;">Current games near you</h1>  
       <div class="mb-3">
-        <label for="form-control">Show games within:</label>
+        <label for="form-control">Max distance:</label>
         <br>
-        <select id="distance-select">
-          <option value="5000">5 km</option>
-          <option value="10000">10 km</option>
-          <option value="20000">20 km</option>
-          <option value="50000">50 km</option>
-          <option value="100000">100 km</option>
-          <option value="999999999">Show all games</option>
-        </select>
+        <form id="distance-form">
+          <select class="selectDropdown" id="distance-select" name="selectedDistance">
+            <option value="5000" <%= selectedDistance == 5000 ? 'selected' : '' %>>5 km</option>
+            <option value="10000" <%= selectedDistance == 10000 ? 'selected' : '' %>>10 km</option>
+            <option value="20000" <%= selectedDistance == 20000 ? 'selected' : '' %>>20 km</option>
+            <option value="50000" <%= selectedDistance == 50000 ? 'selected' : '' %>>50 km</option>
+            <option value="100000" <%= selectedDistance == 100000 ? 'selected' : '' %>>100 km</option>
+            <option value="999999999" <%= selectedDistance == 999999999 ? 'selected' : '' %>>Show all games</option>
+          </select>
+          <br>
+          <label for="form-control">Select sport:</label>
+          <br>
+          <select class="selectDropdown" id="sport-select" name="selectedSport">
+            <option value="all" <%= selectedSport === 'all' ? 'selected' : '' %>>All</option>
+            <option value="Soccer" <%= selectedSport === 'Soccer' ? 'selected' : '' %>>Soccer</option>
+            <option value="Basketball" <%= selectedSport === 'Basketball' ? 'selected' : '' %>>Basketball</option>
+            <option value="Volleyball" <%= selectedSport === 'Volleyball' ? 'selected' : '' %>>Volleyball</option>
+            <option value="Tennis" <%= selectedSport === 'Tennis' ? 'selected' : '' %>>Tennis</option>
+            <option value="Padel" <%= selectedSport === 'Padel' ? 'selected' : '' %>>Padel</option>
+            <option value="Table tennis" <%= selectedSport === 'Table tennis' ? 'selected' : '' %>>Table tennis</option>
+            <option value="Rugby" <%= selectedSport === 'Rugby' ? 'selected' : '' %>>Rugby</option>
+            <option value="American football" <%= selectedSport === 'American football' ? 'selected' : '' %>>American football</option>
+            <option value="Innebandy" <%= selectedSport === 'Innebandy' ? 'selected' : '' %>>Innebandy</option>
+          </select>
+          <br>
+          <button class="btn filterBtn" type="submit">Set filter</button>
+        </form>
+        <script>
+          document.getElementById("distance-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const selectedDistance = this.elements.selectedDistance.value;
+            const selectedSport = this.elements.selectedSport.value;
+            window.location.href = `/feed?selectedDistance=${selectedDistance}&selectedSport=${selectedSport}`;
+          });
+        </script>
+        
       </div>
       <a href="/profile" id="createEventButton">
         <span>
@@ -31,7 +59,7 @@
                       <span><%= posts[i].commentCount%></span> 
                     </div>
                   <%}%> 
-                  <h6 class="postTitle"><%=posts[i].sport[0].toUpperCase()+posts[i].sport.slice(1).toLowerCase() %> game</h6>
+                  <h6 class="postTitle"><%=posts[i].sport%> game</h6>
                   <span class=" distanceText">
                     <%= (posts[i].distance / 1000).toFixed(1) %> km from you
                   </span>
