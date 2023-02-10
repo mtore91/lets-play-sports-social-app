@@ -116,12 +116,33 @@
                             document.getElementById("country").value = country;
                           });
                         }; 
-                      
                       </script>
+                      <script>
+                        document.querySelector("form").addEventListener("submit", function(event) {
+                          let formIsValid = true;
+                          const userName = document.querySelector("#userName").value;
+                          const autocomplete = document.querySelector("#autocomplete").value;
+                          const formattedAddress = document.querySelector("#formattedAddress").value;
+                        
+                          if (!userName) {
+                            alert("Please enter a user name");
+                            formIsValid = false;
+                          }
+                        
+                          if (!autocomplete || !formattedAddress) {
+                            alert("Please choose an address from the list of suggestions provided by Google Maps.");
+                            formIsValid = false;
+                          }
+
+                          if (!formIsValid) {
+                            event.preventDefault();
+                          }
+                        });
+                        </script>
                     </div>
                     
                     
-                    <button type="submit" class="btn btn-primary" value="Upload">Create profile</button>
+                    <button type="submit" class="btn btn-primary createProfileBtn" value="Upload">Create profile</button>
                   </form>
             </section>
         </div>

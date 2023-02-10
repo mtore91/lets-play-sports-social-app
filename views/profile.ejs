@@ -15,7 +15,7 @@
                 <% if(posts[i].date >= new Date() && posts[i].joinedUsers.includes(user.userName)){ %>
                 <li class="col-6 justify-content-between mt-5" id="profilePosts">
                   <a href="/post/<%= posts[i]._id%>" class="link-light">
-                    <%= posts[i].sport %> game at <%= posts[i].address.split(',')[0] %>
+                    <%= posts[i].sport %> at <%= posts[i].address.split(',')[0] %>
                     on <%= posts[i].date.toLocaleDateString('en-uk', { weekday:"short", day:"numeric", month:"short"}) %> at <%= posts[i].date.toLocaleTimeString('en-UK').slice(0,-3) %> still needs <%= posts[i].playersNeeded+1 - posts[i].likes %> player(s).
                   </a>
                   <br>
@@ -80,9 +80,32 @@
                 document.getElementById("formattedAddress").value = place.formatted_address;
               });
             }; 
-          </script>
+          </script>           
           <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
         </form>
+        <script>
+          document.querySelector("form").addEventListener("submit", function(event) {
+            let formIsValid = true;
+            const sport = document.querySelector("#sport").value;
+            const playersNeeded = document.querySelector("#playersNeeded").value;
+            const date = document.querySelector("#date").value;
+        
+            if (!sport || !playersNeeded || !date) {
+              alert("Please fill in all the required fields");
+              formIsValid = false;
+            }
+        
+            if (isNaN(playersNeeded)) {
+              alert("Please enter a valid number in the 'Players needed' field");
+              formIsValid = false;
+            }
+        
+            if (!formIsValid) {
+              event.preventDefault();
+            }
+          });
+        </script>
+        
       </div> 
     </div>
   </div>

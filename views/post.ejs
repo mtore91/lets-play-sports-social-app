@@ -36,6 +36,24 @@
       <br><span>Address: <%= post.address %></span>
       <br><span>Game created by: <%= post.createdBy %>
       <br>
+      <div id="map" style="height: 300px; width: 100%; border-radius: 5px; margin-top: 35px;">
+      </div>
+      <script>
+        function initMap() {
+          let latLng = {lat: <%= post.coordinates.coordinates[1] %>, lng: <%= post.coordinates.coordinates[0] %>};
+          let map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: latLng
+          });
+          const marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+          console.log(latLng)
+        }
+        window.initMap = initMap
+      </script>
+      
       <br>
       <% if(post.playersNeeded+1 == post.joinedUserNumber){ %>
         <span><strong>Enough players have joined for a game.</strong></span>

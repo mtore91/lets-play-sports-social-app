@@ -32,7 +32,8 @@ img {
     border-radius: 50%;
 }
 #profilePic:hover{
-    transform: rotate(-5deg);    
+    transition: transform 0.4s;
+    transform: scale(0.95);   
 }
 #profilePicComment{
     width:50px;
@@ -53,6 +54,9 @@ img {
     background-color: whitesmoke;
     color: #BE6E46;
 }
+.createProfileBtn{
+    margin-bottom:15%;
+}
 #feedposts{
     border-bottom: #FF9F1C 5px solid;
     border-radius: 10px;
@@ -60,7 +64,6 @@ img {
     background-color: white;
 }
 #feedposts:hover{
-    opacity: 0.8;
     border-bottom: #FF9F1C 2px solid;
 }
 .feedpostText{
@@ -114,11 +117,19 @@ img {
     color: #093151;
     margin-top: 4px;
 }
+.filterBtn:hover{
+    border: orange solid 2px;
+    color: #011627;
+}
 .selectDropdown{
     background-color: whitesmoke;
     color: #093151;
     border-radius: 4px;
     border: #093151 solid 2px;
+}
+.selectDropdown:hover{
+    border: orange solid 2px;
+    color: #011627;
 }
 .btn-outline-danger{
     background-color: white;
@@ -210,4 +221,38 @@ img {
     font-weight: 800;
     font-size: smaller;
     float: right;
+}
+.signupBlurb{
+    background-color: #093151;
+    opacity: 0.9;
+    margin: 5%;
+    padding:15px;
+    border-radius: 10px;
+    width: 30%;
+    
+}
+
+
+/* Media queries */
+@media screen and (max-width: 850px){
+    #createEventButton{
+        padding: 5px;
+        top: 280px;
+    }
+    .logoutBtn{
+        padding: 5px;
+    }
+    .navimg{
+        width: 70px;
+    }
+    #profilePic{
+        width:50px;
+        border-radius: 50%;
+    }
+}
+@media screen and (max-width: 405px) {
+    
+    .headerLogo{
+        display:none;
+    }
 }

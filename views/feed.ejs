@@ -1,7 +1,9 @@
 <%- include('partials/header') -%>
   <div class="container">
     <div class="row justify-content-center mt-5">
-      <h1 class="text-light text-center" style="font-weight:bold;">Current games near you</h1>  
+      <h1 class="text-light text-center" style="font-weight:bold;">Upcoming games</h1>
+      <h6 class ="text-light text-center">Click on a game to view details and join
+      </h6>  
       <div class="mb-3">
         <label for="form-control">Max distance:</label>
         <br>
@@ -12,7 +14,7 @@
             <option value="20000" <%= selectedDistance == 20000 ? 'selected' : '' %>>20 km</option>
             <option value="50000" <%= selectedDistance == 50000 ? 'selected' : '' %>>50 km</option>
             <option value="100000" <%= selectedDistance == 100000 ? 'selected' : '' %>>100 km</option>
-            <option value="999999999" <%= selectedDistance == 999999999 ? 'selected' : '' %>>Show all games</option>
+            <option value="999999999" <%= selectedDistance == 999999999 ? 'selected' : '' %>>Show all</option>
           </select>
           <br>
           <label for="form-control">Select sport:</label>
@@ -44,14 +46,14 @@
       </div>
       <a href="/profile" id="createEventButton">
         <span>
-        Create a new game
+        Create new game
         </span>
       </a>
       <ul class="row list-unstyled justify-content-evenly">
         <% for(var i=0; i<posts.length; i++) {%>
           <% if(posts[i].date >= new Date()){ %>
              
-              <li class=" col-5 justify-content-evenly mt-5" >
+              <li class=" col-xl-4 col-md-6 col-sm-9 justify-content-evenly mt-5" >
                 <a href="/post/<%= posts[i]._id%>">
                  <div id="feedposts">
                   <%if(posts[i].commentCount>0){%>
