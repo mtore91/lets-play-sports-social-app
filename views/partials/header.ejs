@@ -27,17 +27,16 @@
     />
     <script defer src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_MAPS_API_KEY %>&libraries=places&callback=initMap"></script>
   </head>
-  <!-- <body style="background-image: url(https://res.cloudinary.com/dng1obd8k/image/upload/v1672846567/steven-abraham-RmzmXWuB5EQ-unsplash_dzoxng.jpg); background-size:cover; background-repeat: no-repeat;"> -->
   <body>
     <header class="headBg p-2 ">
       
         
       <nav class="navbar">
         <div class="container-fluid ">
-          <a href="/profile" class="link-light text-center"><img src="<%=user.avatar%>" alt="Profile pic" id="profilePic">
+          <a href="/profile" class="link-light text-center"><img src="<%=user.avatar%>" alt="Profile pic" class="profilePic">
           </a>
           <div class="headerLogo">
-            <a href="/feed" class="navbar-brand text-center"><img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1670240318/lets-play-logo-removebg_ypgiff.png" class="navimg d-inline-block align-text-top" alt="letsplay"><br>
+            <a href="/feed" class="navbar-brand text-center"><img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1670240318/lets-play-logo-removebg_ypgiff.png" class="navimgHead d-inline-block align-text-top" alt="letsplay"><br>
             </a>
           </div>
           <a href="/logout" class="btn btn-outline-light logoutBtn">Logout</a>

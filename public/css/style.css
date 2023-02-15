@@ -9,7 +9,10 @@ img {
     width: 150px;
 }
 .navimg{
-    width: 110px;
+    width: 70px;
+}
+.navimgHead{
+    width:100px;
 }
 
 #event-img {
@@ -21,17 +24,19 @@ img {
     width: 125px;
     border-radius: 50%;
     float:right;
+    margin-left:20px;
+    margin-bottom: 20px;
 }
 #myImage{
     width:140px;
     border-radius: 50%;
-    margin-left: 180px;
+    margin: 20px 0px; 
 }
-#profilePic{
+.profilePic{
     width:80px;
     border-radius: 50%;
 }
-#profilePic:hover{
+.profilePic:hover{
     transition: transform 0.4s;
     transform: scale(0.95);   
 }
@@ -94,7 +99,9 @@ img {
   }
 .footBg {
     background-color: #011627;
-    margin-top: 10%;
+    position:relative;
+    bottom: 0;
+    width:100%;
 }
 .navbar{
     margin:0 10%
@@ -168,9 +175,11 @@ img {
 }
 .singleComment{
     margin-left: 18%;
+    margin-top: -9%;
     background: white;
     border-bottom: solid #FF9F1C 2px;
     border-radius: 10px;
+    border-top-left-radius: 0;
     padding: 5px;
     color:#011627;
 }
@@ -190,6 +199,9 @@ img {
     font-size: smaller;
     float: right;
     margin-left: 10px;
+}
+.gameOnPost{
+    margin-right:-15%;
 }
 .userJoined{
     background-color: #FF9F1C;
@@ -231,10 +243,36 @@ img {
     width: 30%;
     
 }
+.loginBody{
+    background-image: url(https://res.cloudinary.com/dng1obd8k/image/upload/v1671183672/maninder-sidhu-AcaJrTMb8Pc-unsplash_aluorx.jpg); background-size: cover;
+}
 
 
 /* Media queries */
+@media screen and (max-width: 1100px){
+    .singleComment{
+        margin-left:22%;
+        margin-top:-10%;
+    }
+}
+@media screen and (max-width: 950px){
+    .singleComment{
+        margin-left:24%;
+        margin-top:-12%;
+    }
+    .loginBody{
+        background-color: #093151;
+        background-image: none;
+    }
+    .signupBlurb{
+        width: 50%;
+    }
+}
 @media screen and (max-width: 850px){
+    .singleComment{
+        margin-left:27%;
+        margin-top:-13%;
+    }
     #createEventButton{
         padding: 5px;
         top: 280px;
@@ -250,9 +288,82 @@ img {
         border-radius: 50%;
     }
 }
-@media screen and (max-width: 405px) {
-    
+@media screen and (max-width: 670px){
+    .singleComment{
+        margin-left:31%;
+    }
+    #event-img-post{
+        width: 80px;
+    }
+    #myImage{
+        width: 100px;
+    }
+    .footerText{
+        font-size: small;
+    }
+    .signupBlurb{
+        font-size: smaller;
+    }
+}
+@media screen and (min-width: 571px) {
+    .addGame{
+        border-right:#FF9F1C solid 2px;
+        padding-right:40px;
+    }
+    .profileSide{
+        padding-left:40px;
+    }
+}
+@media screen and (max-width: 570px){
+    .singleComment{
+        margin-left:5%;
+        margin-top: 0;
+        width: 100%;
+    }
+    .profileColumns{
+        width:95%;
+    }
+    .profileInfo{
+        margin-top: 10%;
+        padding: 7%;
+        border-top:#FF9F1C solid 2px;
+        border-bottom: #FF9F1C solid 2px;
+    }
+    .post{
+        width: 100%;
+    }
+    .signupBlurb{
+        width:80%;
+    }
+    .signupContainer{
+        width:70%;
+    }
+}
+@media screen and (max-width: 450px){
+    .singleComment{
+        font-size: smaller;
+    }
+    #event-img-post{
+        margin-right:-18%;
+    }
+    #profilePicComment{
+        display: none;
+    }
+    .signupContainer{
+        width:80%;
+    } 
     .headerLogo{
         display:none;
     }
+    .picHeaderProfilePage{
+        display:none;
+    }
+    .profHeaderLogo{
+        position: relative;
+        right: 40px;
+    }
+}
+@media screen and (max-width: 405px) {
+    
+   
 }

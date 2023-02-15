@@ -1,7 +1,7 @@
 <%- include('partials/loginheader') -%>
     <main class="container">
         <div class="row justify-content-center">
-            <section class="col-6 mt-5">
+            <section class="col-6 mt-5 signupContainer">
                 <% if (locals.messages.errors) { %>
                     <% messages.errors.forEach( el => { %>
                         <div class="alert alert-danger"><%= el.msg %></div>
@@ -39,7 +39,7 @@
                       <input  type="hidden" id="streetAddress" name="streetAddress"> 
                       <input  type="hidden" id="city" name="city"> 
                       <input  type="hidden" id="country" name="country"> 
-                      <div class="text-white">This is to find games close to you, it doesn't need to be your exact address</div>
+                      <div id="emailHelp" class="form-text">This is to find games close to you, it doesn't need to be your exact address</div>
                     </div>
                     <div class="mb-3">
                       <label for="avatar" class="form-label">Select avatar</label>

@@ -91,9 +91,6 @@ module.exports = {
     try {
         const sport = req.body.sport;
         const formattedSport = sport.charAt(0).toUpperCase() + sport.slice(1).toLowerCase();
-      //   if (!req.body.sport || !req.body.formattedAddress || !req.body.coordinates || !req.body.date || !req.body.playersNeeded || req.body.playersNeeded <= 0) {
-      //     return res.status(400).send({ error: "One or more required fields are missing or invalid" });
-      // }
       
         const newPost = {
             sport: formattedSport,

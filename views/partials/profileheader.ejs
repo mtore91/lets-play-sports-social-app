@@ -26,13 +26,20 @@
       crossorigin="anonymous"
     />
     <script defer src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_MAPS_API_KEY %>&libraries=places&callback=initMap"></script>
-
   </head>
-  <body class="loginBody">
-    <header class="headBg p-2 ">        
+  <body>
+    <header class="headBg p-2 ">
+      
+        
       <nav class="navbar">
-        <div class="container-fluid justify-content-center">
-          <a href="/feed" class="navbar-brand text-center"><img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1670240318/lets-play-logo-removebg_ypgiff.png" class="navimg d-inline-block align-text-top" alt="letsplay"></a>
+        <div class="container-fluid ">
+          <a href="/profile" class="link-light text-center"><img src="<%=user.avatar%>" alt="Profile pic" class="profilePic picHeaderProfilePage">
+          </a>
+          <div class="profHeaderLogo">
+            <a href="/feed" class="navbar-brand text-center"><img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1670240318/lets-play-logo-removebg_ypgiff.png" class="navimgHead d-inline-block align-text-top" alt="letsplay"><br>
+            </a>
+          </div>
+          <a href="/logout" class="btn btn-outline-light logoutBtn">Logout</a>
         </div>
       </nav>
     </header>
