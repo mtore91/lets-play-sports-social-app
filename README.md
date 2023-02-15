@@ -6,10 +6,10 @@ Let's play is a full-stack web application designed to make it easy for users to
 
 In order to run the application yourself, you will need to have the following API keys and software installed:
 
-    - Node.js
-    - MongoDB
-    - Google Maps API key (You will need to sign up to Google Cloud Platform)
-    - Cloudinary account and API key
+  - Node.js
+  - MongoDB
+  - Google Maps API key (You will need to sign up to Google Cloud Platform)
+  - Cloudinary account and API key
 
 ## Installation
 
@@ -44,17 +44,12 @@ To run the application, users should follow these steps:
 ## Features
 
 
-    - User authentication using Passport middleware
-
-    - User authorization: The actions that the user is authorized to perform based on their user ID stored in the MongoDB database
-
-    - Ability for users to create and join pick up sports games in their local area
-
-    - Integration with the Google Maps API to get coordinates for events and users
-
-    - Ability to filter events by sport and distance from the user's location using geospatial queries in MongoDB
-
-    - Ability to upload and store photos for user avatars using Multer middleware and Cloudinary API
+  - User authentication using Passport middleware
+  - User authorization: The actions that the user is authorized to perform based on their user ID stored in the MongoDB database
+  - Ability for users to create and join pick up sports games in their local area
+  - Integration with the Google Maps API to get coordinates for events and users
+  - Ability to filter events by sport and distance from the user's location using geospatial queries in MongoDB
+  - Ability to upload and store photos for user avatars using Multer middleware and Cloudinary API
     
 ---
 
@@ -67,25 +62,20 @@ User authorization: The actions that the user is authorized to perform are based
 ---
 ## Middleware
 
-The application uses the following middleware:
-
-    - Passport: Used for user authentication and authorization.
-
-    - Multer: Used for handling file uploads, such as user avatars.
-
-    - Morgan: Used for HTTP request logging.
-
-    - Express-validator: Used for validating user input data.
+  - Passport: Used for user authentication and authorization.
+  - Multer: Used for handling file uploads, such as user avatars.
+  - Morgan: Used for HTTP request logging.
+  - Express-validator: Used for validating user input data.
 
 ---
-## Issues and Limitations
+## Limitations and potential improvements
 
-
-    - The application is limited to organizing and joining pick-up sports games only. It does not support league play or other forms of competitive sports.
-    - The application is only available in English.
-    - Currently no option for users to edit or delete their account.
-    - Currently no option to add friends. When this is added, games could easily be filtered by games that their friends have created/joined. 
-    - The application's UI/UX could be improved. Potentially the way that events are shown on the feed page.
+  - Currently no option for users to edit or delete their account.
+  - Currently no option to add friends. When this is added, games could easily be filtered by games that their friends have created/joined. 
+  - The application's UI/UX could be improved.
+  - Potential to add a notification system that sends emails to users involved when a game is confirmed to have enough players. This could allow them to add the event to their calendar.
+  - The application is only available in English.
+  - The application is limited to organizing and joining pick-up sports games only. It does not support league play or other forms of competitive sports. 
 
 ---
 ## Contributing
