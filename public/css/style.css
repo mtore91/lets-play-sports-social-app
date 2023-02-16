@@ -1,6 +1,33 @@
+html{
+    margin:0;
+    padding:0;
+}
 body{
     color: white;
-    background-color: #093151;
+    background: linear-gradient(to top, #093151 90%, #011627);
+}
+.mainContainer{
+    min-height: 98vh;
+    position: relative;
+    padding:0;
+    margin: 0;
+}
+.content-wrap{
+    padding-bottom: 6rem;
+}
+.headBg {
+    background-color: #011627;
+    height:10%;
+    border-bottom: #FF9F1C solid 1px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+.footBg {
+    background-color: #011627;
+    position:absolute;
+    bottom: 0;
+    width:100%;
+    height: 6rem;
 }
 a{
     text-decoration: none;
@@ -99,12 +126,13 @@ img {
   }
 .footBg {
     background-color: #011627;
-    position:relative;
+    position:absolute;
     bottom: 0;
     width:100%;
+    height: 6rem;
 }
 .navbar{
-    margin:0 10%
+    margin: 0 10%
 }
 
 .btn{
@@ -162,6 +190,9 @@ img {
     margin-top: 6%;
     width: 75%;
     font-size: large;
+}
+.footerText{
+    font-size: 0.6rem;
 }
 .postTitle{
     color: #011627;
@@ -235,17 +266,17 @@ img {
     float: right;
 }
 .signupBlurb{
-    background-color: #093151;
-    opacity: 0.9;
+    background-color: #011627;
+    
     margin: 5%;
-    padding:15px;
+    padding:10px;
     border-radius: 10px;
-    width: 30%;
+    width: 40%;
     
 }
-.loginBody{
+/* .loginBody{
     background-image: url(https://res.cloudinary.com/dng1obd8k/image/upload/v1671183672/maninder-sidhu-AcaJrTMb8Pc-unsplash_aluorx.jpg); background-size: cover;
-}
+} */
 
 
 /* Media queries */
@@ -298,9 +329,6 @@ img {
     #myImage{
         width: 100px;
     }
-    .footerText{
-        font-size: small;
-    }
     .signupBlurb{
         font-size: smaller;
     }
@@ -352,6 +380,9 @@ img {
     .signupContainer{
         width:80%;
     } 
+    .signupBlurb{
+        margin-top: 20%;
+    }
     .headerLogo{
         display:none;
     }

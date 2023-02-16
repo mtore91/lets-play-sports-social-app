@@ -1,5 +1,6 @@
 <%- include('partials/header') -%>
-  <div class="container" style="padding-bottom:8%;">
+
+  <div class="content-wrap container" style="padding-bottom:8%;">
     <div class="row justify-content-center mt-5">
       <h1 class="text-light text-center" style="font-weight:bold;">Upcoming games</h1>
       <h6 class ="text-light text-center">Click on a game to view details and join
@@ -49,8 +50,11 @@
         Create new game
         </span>
       </a>
-      <ul class="row list-unstyled justify-content-evenly">
+      <ul class="row list-unstyled justify-content-evenly" style="margin-bottom: 10%;">
         <% for(var i=0; i<posts.length; i++) {%>
+          <% if(posts.length === 0) {%>
+            <span>No games right now. Create your own or try adjusting your filter.</span>
+          <%}%> 
           <% if(posts[i].date >= new Date()){ %>
              
               <li class=" col-xl-4 col-md-6 col-sm-9 justify-content-evenly mt-5" >
@@ -135,5 +139,6 @@
         <% } %>
         </ul>
     </div>
-  </div>  
+  </div>
+
 <%- include('partials/footer') -%>
