@@ -274,6 +274,9 @@ img {
     width: 40%;
     
 }
+.feedUl{
+    margin-bottom: 15%;
+}
 /* .loginBody{
     background-image: url(https://res.cloudinary.com/dng1obd8k/image/upload/v1671183672/maninder-sidhu-AcaJrTMb8Pc-unsplash_aluorx.jpg); background-size: cover;
 } */
@@ -364,6 +367,9 @@ img {
     .signupContainer{
         width:70%;
     }
+    .feedUl{
+        margin-bottom: 25%;
+    }
 }
 @media screen and (max-width: 450px){
     .singleComment{
@@ -392,7 +398,9 @@ img {
         right: 40px;
     }
 }
-@media screen and (max-width: 405px) {
-    
+@media screen and (max-width: 425px) {
+    .feedUl{
+        margin-bottom: 35%;
+    }
    
 }
