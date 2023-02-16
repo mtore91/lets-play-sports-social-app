@@ -358,6 +358,8 @@ img {
     }
     .signupBlurb{
         width:80%;
+        margin:auto;
+        margin-top: 35%;
     }
     .signupContainer{
         width:70%;
