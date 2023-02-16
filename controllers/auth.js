@@ -101,7 +101,12 @@ exports.postSignup = async (req, res, next) => {
 
   if (req.body.avatar === 'upload') {
     try {
-      const result = await cloudinary.uploader.upload(req.file.path);
+      // const result = await cloudinary.uploader.upload(req.file.path);
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        transformation: [
+          { width: 500, height: 500, crop: "fill" }
+        ]
+      });
       user.avatar = result.secure_url;
     } catch (err) {
       return next(err);

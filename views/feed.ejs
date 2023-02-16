@@ -51,12 +51,11 @@
         </span>
       </a>
       <ul class="row list-unstyled justify-content-evenly feedUl">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <% if(posts.length === 0) {%>
-            <span>No games right now. Create your own or try adjusting your filter.</span>
-          <%}%> 
+        <% let count = 0; %>
+        <% for(let i=0; i<posts.length; i++) {%>
+          
           <% if(posts[i].date >= new Date()){ %>
-             
+            <% count++; %>
               <li class=" col-xl-4 col-md-6 col-sm-9 justify-content-evenly mt-5" >
                 <a href="/post/<%= posts[i]._id%>">
                  <div id="feedposts">
@@ -137,6 +136,9 @@
             
           <%}%>
         <% } %>
+        <% if(count === 0) {%>
+          <span class="noGameMessage">No games right now. Create your own or try adjusting your filter.</span>
+        <%}%> 
         </ul>
     </div>
   </div>

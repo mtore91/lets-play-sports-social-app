@@ -234,6 +234,10 @@ img {
 .gameOnPost{
     margin-right:-15%;
 }
+.noGameMessage{
+    display: flex;
+    justify-content: center;
+}
 .userJoined{
     background-color: #FF9F1C;
     border: solid orange 2px;
@@ -346,6 +350,9 @@ img {
         margin-left:5%;
         margin-top: 0;
         width: 100%;
+    }
+    .profilePic{
+        width: 65px;
     }
     .profileColumns{
         width:95%;
