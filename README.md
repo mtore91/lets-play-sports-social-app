@@ -83,6 +83,10 @@ User authorization: The actions that the user is authorized to perform are based
 Contributions to the project are welcome. To contribute, please fork the repository and create a pull request with your proposed changes.
 
 ---
+## Acknowledgments
+This webapp was built using Leon Noel's Binary Upload Boom social media site template. 
+
+---
 ## Resources
 
 The following resources were used in the development of this project:
