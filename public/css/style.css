@@ -156,6 +156,30 @@ img {
     border: orange solid 2px;
     color: #011627;
 }
+.expandBtn{
+    background: none;
+    color: #093151;
+    border:none;
+    float:right;
+    margin-top:-57px;
+    margin-right: 30px;
+   
+}
+.expandBtn:hover{
+    color: #FF9F1C;
+}
+.collapseBtn{
+    background: none;
+    color: #093151;
+    border:none;
+    float:right;
+    margin-right:9%;
+    margin-top:-10%;
+}
+.collapseBtn:hover{
+    color: #FF9F1C;
+}
+
 .selectDropdown{
     background-color: whitesmoke;
     color: #093151;
@@ -190,6 +214,13 @@ img {
     margin-top: 6%;
     width: 75%;
     font-size: large;
+}
+.unexpandedText{
+    display: flex;
+    justify-content: center;
+}
+.expanded {
+  display: none;
 }
 .footerText{
     font-size: 0.6rem;
@@ -267,7 +298,10 @@ img {
     align-items: center;
     font-weight: 800;
     font-size: smaller;
-    float: right;
+    float: left;
+}
+#initialCommentNotification{
+    float:left;
 }
 .signupBlurb{
     background-color: #011627;
@@ -281,9 +315,6 @@ img {
 .feedUl{
     margin-bottom: 15%;
 }
-/* .loginBody{
-    background-image: url(https://res.cloudinary.com/dng1obd8k/image/upload/v1671183672/maninder-sidhu-AcaJrTMb8Pc-unsplash_aluorx.jpg); background-size: cover;
-} */
 
 
 /* Media queries */

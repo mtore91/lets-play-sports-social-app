@@ -56,7 +56,28 @@
           
           <% if(posts[i].date >= new Date()){ %>
             <% count++; %>
-              <li class=" col-xl-4 col-md-6 col-sm-9 justify-content-evenly mt-5" >
+              <li class=" col-xl-4 col-md-6 col-sm-9 justify-content-evenly mt-5 event-item" >
+                <div class="expandable" id="feedposts">
+                  <%if(posts[i].commentCount>0){%>
+                    <div class="commentNotification" id="initialCommentNotification">
+                      <span><%= posts[i].commentCount%></span> 
+                    </div>
+                  <%}%> 
+                  <a href="/post/<%= posts[i]._id%>">
+                    <h6 class="postTitle"><%=posts[i].sport%> game</h6>
+                    <span class="distanceText"><%= (posts[i].distance / 1000).toFixed(1) %> km from you</span>
+                    <span class="feedpostText unexpandedText">
+                      <% const timeDiff = Math.round((posts[i].date - new Date()) / (1000 * 60 * 60));
+                         if (timeDiff < 24) { %>
+                            in <%= timeDiff %> hours
+                         <% } else { %>
+                            in <%= Math.round(timeDiff / 24) %> days
+                         <% } %>
+                    </span>
+                  </a>
+                    <button class="expandBtn far fa-caret-square-down"></button>
+                </div>
+                <div class="expanded">
                 <a href="/post/<%= posts[i]._id%>">
                  <div id="feedposts">
                   <%if(posts[i].commentCount>0){%>
@@ -65,10 +86,13 @@
                     </div>
                   <%}%> 
                   <h6 class="postTitle"><%=posts[i].sport%> game</h6>
-                  <span class=" distanceText">
+                  <span class="distanceText">
                     <%= (posts[i].distance / 1000).toFixed(1) %> km from you
                   </span>
+                </a>
+                  <button class="collapseBtn far fa-caret-square-up"></button>
                   <br>
+                  <a href="/post/<%= posts[i]._id%>">
                 <% if(posts[i].sport.toLowerCase() == "soccer"){ %>
                   <img src=https://res.cloudinary.com/dng1obd8k/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1671192962/connor-coyne-OgqWLzWRSaI-unsplash_eyljvz.jpg alt="soccer" id="event-img">
                 <% } else if(posts[i].sport.toLowerCase() == "basketball"){ %>
@@ -130,8 +154,10 @@
               <span class="feedpostText"><%= posts[i].joinedUsers.join(', ') %></span>
               <%}%>
                 <br>               
-               </a>
+               </a> 
               </div>
+             
+            </div>
             </li>
             
           <%}%>
@@ -142,5 +168,28 @@
         </ul>
     </div>
   </div>
+<script>
+  const buttons = document.querySelectorAll('.expandBtn, .collapseBtn');
 
+buttons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    // Get the corresponding event item container
+    const eventItem = btn.closest('.event-item');
+
+    // Get the initial view container and the expanded view container
+    const initialView = eventItem.querySelector('.expandable');
+    const expandedView = eventItem.querySelector('.expanded');
+
+    // Toggle the display of the initial view and the expanded view
+    if (btn.classList.contains('expandBtn')) {
+      initialView.style.display = 'none';
+      expandedView.style.display = 'block';
+    } else if (btn.classList.contains('collapseBtn')) {
+      expandedView.style.display = 'none';
+      initialView.style.display = 'block';
+    }
+  });
+});
+
+</script>
 <%- include('partials/footer') -%>
