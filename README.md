@@ -1,12 +1,12 @@
 # Let's play
 ## Intro
 Let's play is a full-stack web application designed to make it easy for users to organize and join pick-up sports games in their local area. You can check it out 
-<a href="letsplay.up.railway.app/">HERE.</a> 
+<a href="https://www.letsplay.up.railway.app/">HERE.</a> 
 
-You can create your own profile or use the login: guest@guest.com and password: 'password' 
-
-<img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1677685845/letsplay_cvryje.gif">
-
+You can create your own profile or use the login: guest@guest.com and password: 'password' <br>
+<a href="https://www.letsplay.up.railway.app/">
+<img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1677685845/letsplay_cvryje.gif" style="width: 80%;">
+</a><br>
 The application uses an MVC structure and stores data using MongoDB. It also utilizes Cloudinary to upload and store photos for user avatars and the Google Maps API to get coordinates for events and users. The main goal of the project is to make sports more fun and accessible to everyone. 
 
 ## Prerequisites
@@ -77,12 +77,13 @@ User authorization: The actions that the user is authorized to perform are based
 ---
 ## Limitations and potential improvements
 
+  - The application's UI/UX could be improved.
   - Currently no option for users to edit or delete their account.
   - Currently no option to add friends. When this is added, games could easily be filtered by games that their friends have created/joined. 
-  - The application's UI/UX could be improved.
+  
   - Potential to add a notification system that sends emails to users involved when a game is confirmed to have enough players. This could allow them to add the event to their calendar.
   - The application is only available in English.
-  - The application is limited to organizing and joining pick-up sports games only. It does not support league play or other forms of competitive sports. 
+  - The application is limited to organizing and joining pick-up sports games only. It does not support league play or keeping scores etc. 
 
 ---
 ## Contributing
@@ -92,6 +93,10 @@ Contributions to the project are welcome. To contribute, please fork the reposit
 ---
 ## Acknowledgments
 This webapp was built using Leon Noel's Binary Upload Boom social media site template. 
+
+---
+## Other projects
+Check out my portfolio including my latest projects <a href="https://martintore.netlify.app/">here.</a>
 
 ---
 ## Resources
