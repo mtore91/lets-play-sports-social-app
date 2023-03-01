@@ -3,10 +3,10 @@
 Let's play is a full-stack web application designed to make it easy for users to organize and join pick-up sports games in their local area. You can check it out 
 <a href="https://www.letsplay.up.railway.app/">HERE.</a> 
 
-You can create your own profile or use the login: guest@guest.com and password: 'password' <br>
+You can create your own profile or use the login: guest@guest.com and password: 'password' <br><br>
 <a href="https://www.letsplay.up.railway.app/">
 <img src="https://res.cloudinary.com/dng1obd8k/image/upload/v1677685845/letsplay_cvryje.gif" style="width: 80%;">
-</a><br>
+</a><br><br>
 The application uses an MVC structure and stores data using MongoDB. It also utilizes Cloudinary to upload and store photos for user avatars and the Google Maps API to get coordinates for events and users. The main goal of the project is to make sports more fun and accessible to everyone. 
 
 ## Prerequisites
