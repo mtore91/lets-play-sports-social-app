@@ -22,6 +22,12 @@ body{
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
   }
+.loginHeadBg{
+    background-color: #093151;
+}
+.loginLogo{
+    width:100px;
+}
 .footBg {
     background-color: #011627;
     position:absolute;
@@ -72,7 +78,7 @@ img {
     border-radius:50%;
 }
 #createEventButton{
-    border: solid white 3px;
+    border: none;
     color: white;
     border-radius: 5px;
     padding: 10px;
@@ -137,17 +143,18 @@ img {
 
 .btn{
     background-color: #FF9F1C;
-    border: solid white 2px;
+    border:none;
     width: auto;
 }
 .btn:hover{
     background-color: white;
     color: #BE6E46;
-    border: solid #BE6E46 2px;
+    
 }
 .filterBtn{
     background-color: whitesmoke;
     padding:2px 6px;
+    border:#093151 solid 2px;
     font-size: smaller;
     color: #093151;
     margin-top: 4px;
@@ -199,6 +206,43 @@ img {
     color: red;
     border: solid 1px red;
 }
+.bouncingball {
+    width:140px;
+    height:140px;
+    border-radius:100%;
+    background-color: #BE6E46;
+    opacity: 0.2;   
+    animation: bounce 1s;
+    transform: translateY(0px);
+    animation-iteration-count: infinite;
+    position:absolute;
+    margin:10px;
+    margin-left: 60%;
+  }
+  
+
+@keyframes bounce {
+	0% {top: 0;
+		-webkit-animation-timing-function: ease-in;
+	}
+	40% {}
+	50% {top: 140px;
+		height: 140px;
+		-webkit-animation-timing-function: ease-out;
+	}
+	55% {top: 160px; height: 120px; 
+		-webkit-animation-timing-function: ease-in;}
+	65% {top: 120px; height: 140px; 
+		-webkit-animation-timing-function: ease-out;}
+	95% {
+		top: 0;		
+		-webkit-animation-timing-function: ease-in;
+	}
+	100% {top: 0;
+		-webkit-animation-timing-function: ease-in;
+	}
+}
+
 .profile{
     background-color: #011627;
     padding: 1% 5% 5% 5%;
@@ -304,11 +348,10 @@ img {
     float:left;
 }
 .signupBlurb{
-    background-color: #011627;
-    
+    background-color: #093151;
     margin: 5%;
     padding:10px;
-    border-radius: 10px;
+    
     width: 40%;
     
 }
@@ -365,6 +408,9 @@ img {
     }
     .signupBlurb{
         font-size: smaller;
+    }
+    .bouncingball{
+        display: none;
     }
 }
 @media screen and (min-width: 571px) {
