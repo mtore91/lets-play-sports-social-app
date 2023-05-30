@@ -1,7 +1,7 @@
 # Let's play
 ## Intro
 Let's play is a full-stack web application designed to make it easy for users to organize and join pick-up sports games in their local area. You can check it out 
-<a href="https://www.letsplay.up.railway.app/">HERE</a>. 
+<a href="https://letsplay.up.railway.app/">HERE</a>. 
 
 You can create your own profile or use the login: guest@guest.com and password: 'password' <br><br>
 <a href="https://www.letsplay.up.railway.app/">
